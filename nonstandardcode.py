@@ -1,3 +1,8 @@
+import os
+import tarfile
+import urllib
+import warnings
+
 import numpy as np
 import pandas as pd
 from scipy.stats import randint
@@ -15,10 +20,10 @@ from sklearn.tree import DecisionTreeRegressor
 
 warnings.filterwarnings('ignore')
 
+
 DOWNLOAD_ROOT = "https://raw.githubusercontent.com/ageron/handson-ml/master/"
 HOUSING_PATH = os.path.join("datasets", "housing")
 HOUSING_URL = DOWNLOAD_ROOT + "datasets/housing/housing.tgz"
-
 
 
 def fetch_housing_data(housing_url=HOUSING_URL, housing_path=HOUSING_PATH):
@@ -95,7 +100,7 @@ housing_tr = pd.DataFrame(X, columns=housing_num.columns,
                           index=housing.index)
 housing_tr["rooms_per_household"] = housing_tr["total_rooms"]/housing_tr["households"]
 housing_tr["bedrooms_per_room"] = housing_tr["total_bedrooms"]/housing_tr["total_rooms"]
-housing_tr["population_per_household"]=housing_tr["population"]/housing_tr["households"]
+housing_tr["population_per_household"] = housing_tr["population"]/housing_tr["households"]
 
 housing_cat = housing[['ocean_proximity']]
 housing_prepared = housing_tr.join(pd.get_dummies(housing_cat,
@@ -167,10 +172,10 @@ y_test = strat_test_set["median_house_value"].copy()
 X_test_num = X_test.drop('ocean_proximity', axis=1)
 X_test_prepared = imputer.transform(X_test_num)
 X_test_prepared = pd.DataFrame(X_test_prepared, columns=X_test_num.columns,
-                          index=X_test.index)
+                               index=X_test.index)
 X_test_prepared["rooms_per_household"] = X_test_prepared["total_rooms"]/X_test_prepared["households"]
 X_test_prepared["bedrooms_per_room"] = X_test_prepared["total_bedrooms"]/X_test_prepared["total_rooms"]
-X_test_prepared["population_per_household"]=X_test_prepared["population"]/X_test_prepared["households"]
+X_test_prepared["population_per_household"] = X_test_prepared["population"]/X_test_prepared["households"]
 
 X_test_cat = X_test[['ocean_proximity']]
 X_test_prepared = X_test_prepared.join(pd.get_dummies(X_test_cat,
@@ -180,4 +185,3 @@ X_test_prepared = X_test_prepared.join(pd.get_dummies(X_test_cat,
 final_predictions = final_model.predict(X_test_prepared)
 final_mse = mean_squared_error(y_test, final_predictions)
 final_rmse = np.sqrt(final_mse)
-
