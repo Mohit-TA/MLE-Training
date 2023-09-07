@@ -24,14 +24,14 @@ python nonstandardcode.py
 
 
 ## Install Housing Package
-    pip install -i https://test.pypi.org/simple/ housingpricera
+    pip install -i https://test.pypi.org/simple/ mle-project==2.1
 
 ## Verify Installations
    - cd ./tests/functional_tests
    - python test_installation.py
 
 ## Workflow scripts
-    - cd src/housingpricera
+    - cd src/mle_project
     - python ingest_data.py
     - python train.py
     - python score.py
