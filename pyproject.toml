@@ -1,0 +1,7 @@
+[project]
+name = "mle_project"
+version = "2.1"
+dependencies = [
+    "requests",
+    'importlib-metadata; python_version<"3.11.4"',
+]

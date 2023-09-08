@@ -1,0 +1,7 @@
+requests
+
+[:python_version < "3.11.4"]
+importlib-metadata
+
+[:python_version == "3.11.4"]
+importlib-metadata

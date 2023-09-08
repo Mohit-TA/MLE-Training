@@ -16,3 +16,29 @@ The following techniques have been used:
 
 ## To excute the script
 python nonstandardcode.py
+
+## Activate Environment
+   - cd deploy/conda
+   - conda env create --name envname --file=env.yml
+   - conda activate envname
+
+
+## Install Housing Package
+    pip install -i https://test.pypi.org/simple/ mle-project==2.1
+
+## Verify Installations
+   - cd ./tests/functional_tests
+   - python test_installation.py
+
+## Workflow scripts
+    - cd src/mle_project
+    - python ingest_data.py
+    - python train.py
+    - python score.py
+
+## Testing
+    - python ./tests/unit_tests/unit_test.py
+    - python ./tests/functional_tests/functional_test.py
+
+## For HTML Documentation
+    - Open ./docs/_build/html/index.html in browser
