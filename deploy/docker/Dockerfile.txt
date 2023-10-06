@@ -1,0 +1,11 @@
+FROM continuumio/miniconda3
+LABEL maintainer="Mohit"
+
+COPY src deploy /
+
+RUN pip install --upgrade pip \
+	&& conda env create -f conda/env.yml
+
+RUN /bin/bash -c "source activate mle-dev"
+
+ENTRYPOINT ["python"]
